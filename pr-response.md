@@ -14,14 +14,22 @@ pytest tests/ -v
 All tests passed successfully.
 
 ## Comment 2 — Deduplication
-**What I did:**
-**How I verified:**
+**What I did:** I added a duplicate check to `add_to_watchlist()`. Before creating a new `WatchlistEntry`, the function now checks whether the user already has the same film in their watchlist. If a duplicate is found, it raises `AlreadyInCollectionError` instead of creating another entry.
+
+**How I verified:** I ran:
+
+```bash
+pytest tests/ -v
+```
+All tests passed successfully.
 
 ## Comment 3 — Missing test
 **What I did:** I created `tests/test_watchlist.py` and added a test to verify that attempting to add a nonexistent film to a user's watchlist raises `FilmNotFoundError`.
 **How I verified:** I ran:
 
+```bash
 pytest tests/test_watchlist.py -v
+```
 
 ## Comment 4 — Default visibility
 **My position:**
