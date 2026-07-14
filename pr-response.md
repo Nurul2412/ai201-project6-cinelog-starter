@@ -52,4 +52,22 @@ pytest tests/test_watchlist.py -v
 **How I verified no conflict remains:** Git completed the rebase successfully and reported that the branch was updated without conflicts.
 
 ## PR Description
-<!-- Written at the end — feature overview, design decisions, manual testing steps -->
+
+PR Description
+Overview:
+
+This PR adds a watchlist feature to CineLog, allowing users to save films they want to watch separately from their collection. Users can add films to their watchlist, retrieve their watchlist, and remove films when they are no longer interested.
+
+Design Decisions:
+Default visibility: I chose to keep watchlists public by default because the feature encourages users to share movie recommendations and discover films through others' watchlists. While some users may prefer private watchlists, that can be added as a configurable option in the future.
+Sort order: I chose to keep alphabetical ordering because it provides a consistent and predictable browsing experience, especially for larger watchlists. Although sorting by date added makes recent additions easier to find, I believe alphabetical ordering is better for long-term usability.
+
+Manual Testing:
+Start the application with python app.py.
+Create or use an existing user.
+Add a film to the user's watchlist.
+Verify the film appears in the watchlist.
+Attempt to add the same film again and confirm that a duplicate entry is prevented.
+Attempt to add a nonexistent film_id and verify that FilmNotFoundError is raised.
+Retrieve the watchlist and verify that films are returned in alphabetical order.
+Remove a film from the watchlist and verify it no longer appears.
