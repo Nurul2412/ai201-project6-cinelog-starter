@@ -51,11 +51,9 @@ pytest tests/test_watchlist.py -v
 **How I resolved it:** I fetched the latest changes from `main` and successfully rebased my `feature/watchlist` branch onto the updated `main` branch.
 **How I verified no conflict remains:** Git completed the rebase successfully and reported that the branch was updated without conflicts.
 
-![alt text](image.png)
 
 ## PR Description
 
-PR Description
 Overview:
 
 This PR adds a watchlist feature to CineLog, allowing users to save films they want to watch separately from their collection. Users can add films to their watchlist, retrieve their watchlist, and remove films when they are no longer interested.
