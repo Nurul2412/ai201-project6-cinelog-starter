@@ -51,6 +51,8 @@ pytest tests/test_watchlist.py -v
 **How I resolved it:** I fetched the latest changes from `main` and successfully rebased my `feature/watchlist` branch onto the updated `main` branch.
 **How I verified no conflict remains:** Git completed the rebase successfully and reported that the branch was updated without conflicts.
 
+![alt text](image.png)
+
 ## PR Description
 
 PR Description
