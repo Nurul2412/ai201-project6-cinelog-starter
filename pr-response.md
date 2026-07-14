@@ -32,14 +32,15 @@ pytest tests/test_watchlist.py -v
 ```
 
 ## Comment 4 — Default visibility
-**My position:**
-**Reasoning:**
-**Tradeoff acknowledged:**
+**My position:** I chose to keep watchlists public by default.
+**Reasoning:** The watchlist feature is intended to encourage sharing and discovery. Making watchlists public by default allows users to easily share movie recommendations without requiring extra setup.
+**Tradeoff acknowledged:** ome users may prefer their watchlists to be private by default. If privacy becomes a requirement in the future, users could be given the option to choose their default visibility.
 
 ## Comment 5 — Sort order
-**My position:** 
-**Reasoning:**
-**Engagement with reviewer's point:**
+**My position:** I decided to keep the current alphabetical ordering.
+
+**Reasoning:** Alphabetical order provides a consistent and predictable way for users to browse their watchlist, especially as it grows larger.
+**Engagement with reviewer's point:** I understand that sorting by date added makes recently added films easier to find. However, I chose alphabetical order because it provides a stable browsing experience and matches the current implementation.
 
 ## Comment 6 — Rebase
 **What conflicted:**
