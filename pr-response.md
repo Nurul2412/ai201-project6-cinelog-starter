@@ -9,20 +9,12 @@ For the code changes, I implemented the requested fixes myself and then used AI 
 ## Comment 1 — Rename
 **What I did:** I renamed `save_to_watchlist()` to `add_to_watchlist()` everywhere throughout the project to follow the repository's `verb_to_noun` naming convention.
 
-**How I verified:** I ran:
-
-```bash
-pytest tests/ -v 
-```
-All tests passed successfully.
+**How I verified:** I searched the project for remaining references to save_to_watchlist() to ensure every call site had been renamed, then ran the full test suite with pytest tests/ -v to confirm nothing was broken.
 
 ## Comment 2 — Deduplication
-**What I did:** I added a duplicate check to `add_to_watchlist()`. Before creating a new `WatchlistEntry`, the function now checks whether the user already has the same film in their watchlist. If a duplicate is found, it raises `AlreadyInCollectionError` instead of creating another entry.
+**What I did:** I added a duplicate check to `add_to_watchlist()`. Before creating a new `WatchlistEntry`, the function now checks whether the user already has the same film in their watchlist. If a duplicate is found, it raises `AlreadyInCollectionError` instead of creating another entry. I followed the same duplicate-checking pattern already used by add_to_collection() so the watchlist behavior remains consistent with the collection feature.
 
-**How I verified:** I ran:
-
-```bash
-pytest tests/ -v
+**How I verified:** 
 ```
 All tests passed successfully.
 
@@ -36,17 +28,17 @@ pytest tests/test_watchlist.py -v
 
 ## Comment 4 — Default visibility
 **My position:** I chose to keep watchlists public by default.
-**Reasoning:** The watchlist feature is intended to encourage sharing and discovery. Making watchlists public by default allows users to easily share movie recommendations without requiring extra setup.
+**Reasoning:** CineLog is centered around discovering and discussing films. A watchlist represents movies a user plans to watch, so making it public by default helps friends exchange recommendations and discover upcoming movies to watch together without requiring extra setup.
 **Tradeoff acknowledged:** Some users may prefer their watchlists to be private by default. If privacy becomes a requirement in the future, users could be given the option to choose their default visibility.
 
 ## Comment 5 — Sort order
 **My position:** I decided to keep the current alphabetical ordering.
 
 **Reasoning:** Alphabetical order provides a consistent and predictable way for users to browse their watchlist, especially as it grows larger.
-**Engagement with reviewer's point:** I understand that sorting by date added makes recently added films easier to find. However, I chose alphabetical order because it provides a stable browsing experience and matches the current implementation.
+**Engagement with reviewer's point:** I understand the reviewer's point that users often want to see what they added most recently. However, unlike a collection that users revisit frequently, a watchlist is often browsed when deciding what to watch next. Alphabetical ordering makes it easier to scan large watchlists for a specific title while remaining consistent over time.
 
 ## Comment 6 — Rebase
-**What conflicted:** No manual merge conflicts occurred during the rebase.
+**What conflicted:** Although Git completed the rebase without manual merge conflicts, I later found that some integer-based film ID references remained after the UUID migration. I updated the remaining test and documentation to use UUIDs and reran the test suite to verify the project was fully consistent.
 
 **How I resolved it:** I fetched the latest changes from `main` and successfully rebased my `feature/watchlist` branch onto the updated `main` branch.
 **How I verified no conflict remains:** Git completed the rebase successfully and reported that the branch was updated without conflicts.
